@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import pe.edu.pucp.lab3gtics.dto.ContactoMascota;
+import pe.edu.pucp.lab3gtics.dto.MascotasPorContactoDto;
 import pe.edu.pucp.lab3gtics.entity.Cuenta;
 
 import java.util.List;
@@ -15,4 +16,11 @@ public interface CuentaRepository extends JpaRepository<Cuenta, Integer> {
             "left join mascota ma on cu.idcuenta=ma.cuenta_idcuenta\n" +
             "group by idcuenta;", nativeQuery = true)
     List<ContactoMascota> obtenerContactoMascota();
+
+    @Query(value = "select ma.idmascota,ma.nombre, ma.anho, ma.observaciones,ma.historia, ma.sexo from cuenta as cu\n" +
+            "left join mascota ma on cu.idcuenta=ma.cuenta_idcuenta\n" +
+            "where cu.idcuenta like %?1%", nativeQuery = true)
+    List<MascotasPorContactoDto> obtenerMascotasPorContacto(int id);
+
+
 }
