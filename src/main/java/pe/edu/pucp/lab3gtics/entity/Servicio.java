@@ -20,7 +20,7 @@ public class Servicio {
     private Cuenta cuenta;
 
     @Column(name = "hora_inicio", nullable = false)
-    private Instant horaInicio;
+    private Instant horainicio;
 
     @Column(name = "duracion", nullable = false)
     private Integer duracion;
@@ -57,12 +57,12 @@ public class Servicio {
         this.duracion = duracion;
     }
 
-    public Instant getHoraInicio() {
-        return horaInicio;
+    public Instant getHorainicio() {
+        return horainicio;
     }
 
-    public void setHoraInicio(Instant horaInicio) {
-        this.horaInicio = horaInicio;
+    public void setHorainicio(Instant horainicio) {
+        this.horainicio = horainicio;
     }
 
     public Cuenta getCuenta() {

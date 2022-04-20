@@ -47,7 +47,7 @@
                     <td th:text="${mascota.raza}"></td>
                     <td th:text="${mascota.cantidadservicios}"></td>
                     <td><a class="btn btn-outline-primary"
-                           th:href="@{'/mascota/?id='+${mascota.id}}">Detalles de Servicios</a></td>
+                           th:href="@{'/servicio/lista?id='+${mascota.id}}">Detalles de Servicios</a></td>
                     <td><a class="btn btn-primary"
                            th:href="@{'/mascota/edit?id='+${mascota.id}}">Editar</a></td>
                     <td><a class="btn btn-danger"

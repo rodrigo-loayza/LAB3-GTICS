@@ -1,47 +1,37 @@
 package pe.edu.pucp.lab3gtics.controller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import pe.edu.pucp.lab3gtics.entity.OpcionServicio;
-import pe.edu.pucp.lab3gtics.repository.OpcionServicioRepository;
-import pe.edu.pucp.lab3gtics.repository.ResponsableRepository;
-import pe.edu.pucp.lab3gtics.repository.ServicioRepository;
+import org.springframework.web.bind.annotation.RequestParam;
+import pe.edu.pucp.lab3gtics.entity.Mascota;
+import pe.edu.pucp.lab3gtics.repository.MascotaRepository;
+import pe.edu.pucp.lab3gtics.repository.ServiceRepository;
+
+import java.util.Optional;
 
 @Controller
-@RequestMapping("servicios")
+@RequestMapping("servicio")
 public class ServicioController {
 
     @Autowired
-    ServicioRepository servicioRepository;
+    ServiceRepository serviceRepository;
 
     @Autowired
-    OpcionServicioRepository opcionServicioRepository;
+    MascotaRepository mascotaRepository;
 
-    @Autowired
-    ResponsableRepository responsableRepository;
-
-    @GetMapping("lista")
-    String listaServicios(Model model){
-        model.addAttribute("listaServicios",servicioRepository.findAll());
-        model.addAttribute("listaServicios1", opcionServicioRepository.findAll());
-        return "servicios/lista";
+    @GetMapping(value = {"", "/lista"})
+    public String listarServicios(Model model,
+                                  @RequestParam("id") Integer id) {
+        Optional<Mascota> optional = mascotaRepository.findById(id);
+        if (optional.isPresent()){
+            model.addAttribute("listaServicio", serviceRepository.obtenerServicioMascota(id));
+            model.addAttribute("mascota",optional.get());
+            return "servicio/lista";
+        }
+        return  "redirect:/mascota/lista";
     }
 
-    @GetMapping("new")
-    String nuevoServicio(Model model) {
-        model.addAttribute("listaEncargados",responsableRepository.findAll());
-        return "servicios/newform";
-    }
-
-    @PostMapping("/guardar")
-    public String guardarServicio(OpcionServicio opcionServicio, RedirectAttributes attributes){
-        attributes.addFlashAttribute("msg", "Marca creada exitosamente");
-        return "redirect:/servicios/lista";
-    }
 }
