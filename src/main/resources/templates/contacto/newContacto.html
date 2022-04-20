@@ -1,42 +1,44 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head th:replace="fragments/general.html :: cabecera(titulo = 'Nuevo Contacto')"></head>
-<body class="container">
+    <body class="container">
 
-<h2>Nuevo Contacto</h2><hr />
-<form method="post" th:action="@{'/contacto/save'}">
+        <h2>Nuevo Contacto</h2>
+        <hr/>
+        <form method="post" th:action="@{'/contacto/save'}">
 
-    <div class="row">
-        <div class="form-group col-6">
-            <label for="correo">Correo</label>
-            <input type="text" class="form-control" name="correo" id="correo">
-        </div>
-        <div class="form-group col-6">
-            <label for="password">Password</label>
-            <input type="text" class="form-control" name="password" id="password">
-        </div>
-    </div>
+            <div class="row">
+                <div class="form-group col-6">
+                    <label for="correo">Correo</label>
+                    <input type="text" class="form-control" name="correo" id="correo">
+                </div>
+                <div class="form-group col-6">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" name="password" id="password">
+                </div>
+            </div>
 
-    <div class="row">
-        <div class="form-group col-6">
-            <label for="direccion">Dirección</label>
-            <input  type="text" class="form-control" name="direccion" id="direccion">
-        </div>
-        <div class="form-group col-6">
-            <label for="telefono">Telefono</label>
-            <input  type="text" class="form-control" name="telefono" id="telefono">
-        </div>
-    </div> <br>
-
-
-    <div class="d-grid gap-2 d-md-block">
-        <a th:href="@{'/contacto/listaContacto'}" class="btn btn-danger">Cancelar</a>
-        <button class="btn btn-primary" type="submit">Registrar</button>
-    </div>
+            <div class="row">
+                <div class="form-group col-6">
+                    <label for="direccion">Dirección</label>
+                    <input type="text" class="form-control" name="direccion" id="direccion">
+                </div>
+                <div class="form-group col-6">
+                    <label for="telefono">Telefono</label>
+                    <input type="text" class="form-control" name="telefono" id="telefono">
+                </div>
+            </div>
+            <br>
 
 
+            <div class="d-grid gap-2 d-md-block">
+                <a th:href="@{'/contacto/listaContacto'}" class="btn btn-danger">Cancelar</a>
+                <button class="btn btn-primary" type="submit">Registrar</button>
+            </div>
 
-</form>
-<script th:replace="fragments/general.html::footer-bs"></script>
-</body>
+
+        </form>
+        <footer th:replace="fragments/general.html :: footer"></footer>
+        <script th:replace="fragments/general.html::footer-bs"></script>
+    </body>
 </html>

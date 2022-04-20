@@ -1,80 +1,78 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/general.html :: cabecera(titulo = 'Mascotas por Contacto')"></head>
-<body>
-<div class="container">
+    <head th:replace="fragments/general.html :: cabecera(titulo = 'Mascotas por Contacto')"></head>
+    <body>
+        <div class="container">
 
-    <h2 class="pb-2 text-center border-bottom">Detalles del contacto y sus respectivas mascotas</h2>
+            <h2 class="pb-2 text-center border-bottom">Detalles del contacto y sus respectivas mascotas</h2>
 
-    <div class="container">
-        <div class="row g-2">
-            <div class="col-6">
-                <label class="form-label">ID del Contacto:</label>
-                <div class="p-3 border bg-light"  th:text= "${contacto.getId()}">Custom  </div>
+            <div class="container">
+                <div class="row g-2">
+                    <div class="col-6">
+                        <label class="form-label">ID del Contacto:</label>
+                        <div class="p-3 border bg-light" th:text="${contacto.getId()}">Custom</div>
+                    </div>
+                    <div class="col-6">
+                        <label class="form-label">Correo:</label>
+                        <div class="p-3 border bg-light" th:text="${contacto.correo}"> padding</div>
+                    </div>
+                    <div class="col-6">
+                        <label class="form-label">Dirección:</label>
+                        <div class="p-3 border bg-light" th:text="${contacto.direccion}"> padding</div>
+                    </div>
+                    <div class="col-6">
+                        <label class="form-label">Teléfono:</label>
+                        <div class="p-3 border bg-light" th:text="${contacto.telefono}"> padding</div>
+                    </div>
+                </div>
             </div>
-            <div class="col-6">
-                <label class="form-label">Correo:</label>
-                <div class="p-3 border bg-light"  th:text="${contacto.correo}">  padding</div>
+
+            <div class="row">
+                <div class="col-2">
+                    <a class="btn btn-warning mt-4 mb-4" th:href="@{'/contacto/editar?id='+${contacto.getId()}}">Editar
+                        Contacto</a>
+                </div>
+                <div class="col-8"></div>
+                <div class="col-2">
+                    <a class="btn btn-primary mt-4 mb-4" th:href="@{'/contacto/listaContacto'}">Retroceder</a>
+                </div>
             </div>
-            <div class="col-6">
-                <label class="form-label">Dirección:</label>
-                <div class="p-3 border bg-light" th:text="${contacto.direccion}">  padding</div>
-            </div>
-            <div class="col-6">
-                <label class="form-label">Teléfono:</label>
-                <div class="p-3 border bg-light" th:text="${contacto.telefono}">  padding</div>
-            </div>
+
+            <h2 class="pb-2 text-center border-bottom">Lista de Mascotas del contacto</h2>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Año de Adopción</th>
+                        <th scope="col">Observaciones</th>
+                        <th scope="col">Historia</th>
+                        <th scope="col">Sexo</th>
+                        <th scope="col"></th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="mascota, i : ${mascotaPorContacto}">
+                        <th scope="row" th:text="${i.index +1}"></th>
+                        <td th:text="${mascota.nombre}"></td>
+                        <td th:text="${mascota.anho}"></td>
+                        <td th:text="${mascota.observaciones}"></td>
+                        <td th:text="${mascota.sexo}"></td>
+                        <td>
+                            <a class="btn btn-danger" th:href="@{'/contacto/delete?id='+${mascota.idmascota}}">
+                                Eliminar
+                            </a>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+
+            <footer th:replace="fragments/general.html :: footer"></footer>
+
         </div>
-    </div>
+        <script th:replace="fragments/general.html::footer-bs"></script>
 
-    <div class="row">
-        <div class="col-2">
-            <a class="btn btn-warning mt-4 mb-4" th:href="@{'/contacto/editar?id='+${contacto.getId()}}">Editar Contacto</a>
-        </div>
-        <div class="col-8"></div>
-        <div class="col-2">
-            <a class="btn btn-primary mt-4 mb-4" th:href="@{'/contacto/listaContacto'}">Retroceder</a>
-        </div>
-    </div>
-
-
-
-    <h2 class="pb-2 text-center border-bottom">Lista de Mascotas del contacto</h2>
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-<!--            <th scope="col">Id Mascota</th>-->
-            <th scope="col">Nombre</th>
-            <th scope="col">Año de Adopción</th>
-            <th scope="col">Observaciones</th>
-            <th scope="col">Historia</th>
-            <th scope="col">Sexo</th>
-            <th scope="col"></th>
-
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="mascota, i : ${mascotaPorContacto}">
-            <th scope="row" th:text="${i.index +1}">1</th>
-<!--            <td th:text="${mascota.idmascota}">Mark</td>-->
-            <td th:text="${mascota.nombre}">Mark</td>
-            <td th:text="${mascota.anho}">Otto</td>
-            <td th:text="${mascota.observaciones}">@mdo</td>
-<!--            <td th:text="${mascota.historia}">@mdo</td>-->
-            <td th:text="${mascota.sexo}">Otto</td>
-            <td>
-                <a class="btn btn-danger" th:href="@{'/contacto/delete?id='+${mascota.idmascota}}">
-                    Eliminar
-                </a>
-            </td>
-
-        </tr>
-        </tbody>
-    </table>
-
-</div>
-<script th:replace="fragments/general.html::footer-bs"></script>
-
-</body>
+    </body>
 </html>

@@ -18,7 +18,7 @@ public interface CuentaRepository extends JpaRepository<Cuenta, Integer> {
     List<ContactoMascota> obtenerContactoMascota();
 
     @Query(value = "select ma.idmascota,ma.nombre, ma.anho, ma.observaciones,ma.historia, ma.sexo from cuenta as cu\n" +
-            "left join mascota ma on cu.idcuenta=ma.cuenta_idcuenta\n" +
+            "inner join mascota ma on cu.idcuenta=ma.cuenta_idcuenta\n" +
             "where cu.idcuenta like %?1%", nativeQuery = true)
     List<MascotasPorContactoDto> obtenerMascotasPorContacto(int id);
 

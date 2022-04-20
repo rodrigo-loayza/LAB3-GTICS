@@ -1,51 +1,41 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/general.html :: cabecera(titulo = 'Editar Contacto')"></head>
-<body>
+    <head th:replace="fragments/general.html :: cabecera(titulo = 'Editar Contacto')"></head>
+    <body>
 
-<div class='container'>
+        <div class='container'>
 
-    <div id="content">
-        <main>
-            <!-- Contenido -->
-            <div class="page-header text-center">
-                <h2>Editar Contacto</h2>
-            </div>
-            <div class="container-fluid">
-                <form method="post" th:action="@{'/contacto/save'}" th:object="${contacto}">
-                    <input type="hidden" th:field="*{id}"/>
-                    <div class="mb-3">
-                        <label class="form-label">Correo Electrónico</label>
-                        <input type="text" class="form-control" th:field="*{correo}" disabled>
+            <div id="content">
+                <main>
+                    <!-- Contenido -->
+                    <div class="page-header text-center">
+                        <h2>Editar Contacto</h2>
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">Contraseña</label>
-                        <input type="text" class="form-control" th:field="*{password}" disabled>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Dirección</label>
-                        <input type="text" class="form-control" th:field="*{direccion}">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Teléfono</label>
-                        <input type="text" class="form-control" th:field="*{telefono}" disabled>
-                    </div>
-                    <a th:href="@{'/contacto/listaContacto'}" class="btn btn-danger">Cancelar</a>
-                    <button type="submit" class="btn btn-primary">Actualizar</button>
-                </form>
+                    <div class="container-fluid">
+                        <form method="post" th:action="@{'/contacto/save'}" th:object="${contacto}">
+                            <input type="hidden" th:field="*{id}"/>
+                            <input type="text" class="form-control" th:field="*{correo}" hidden>
+                            <input type="text" class="form-control" th:field="*{telefono}" hidden>
+                            <div class="mb-3">
+                                <label class="form-label">Contraseña</label>
+                                <input type="password" class="form-control" name="password">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Dirección</label>
+                                <input type="text" class="form-control" th:field="*{direccion}">
+                            </div>
 
+                            <a th:href="@{'/contacto/listaContacto'}" class="btn btn-danger">Cancelar</a>
+                            <button type="submit" class="btn btn-primary">Actualizar</button>
+                        </form>
+
+                    </div>
+                </main>
             </div>
-        </main>
-    </div>
-    <!-- /Contenido -->
-    <footer class="py-4 bg-light mt-auto">
-        <div class="container-fluid">
-            <div class="d-flex align-items-center justify-content-between small">
-                <div class="text-muted">Grupo 5 - PUCP @ 2022</div>
-            </div>
+
+            <footer th:replace="fragments/general.html :: footer"></footer>
+
         </div>
-    </footer>
-</div>
-<script th:replace="fragments/general.html::footer-bs"></script>
-</body>
+        <script th:replace="fragments/general.html::footer-bs"></script>
+    </body>
 </html>

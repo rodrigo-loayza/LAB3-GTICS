@@ -6,7 +6,9 @@
             <h2 class="pb-2 text-center border-bottom">Detalle de servicios</h2>
             <h5 class="pb-2" th:text="'Nombre: '+ ${mascota.nombre}"></h5>
             <h5 class="pb-2 border-bottom" th:text="'Edad: '+ (2022 - ${mascota.anho})"></h5>
-            <a class="btn btn-primary mt-4 mb-4" th:href="@{'/servicio/nuevo?idmascota='+${mascota.id}+'&idcuenta='+${mascota.cuenta.id}}">Nuevo Servicio</a>
+            <a class="btn btn-primary mt-4 mb-4"
+               th:href="@{'/servicio/nuevo?idmascota='+${mascota.id}+'&idcuenta='+${mascota.cuenta.id}}">Nuevo
+                Servicio</a>
             <a class="btn btn-outline-secondary mt-4 mb-4" th:href="@{/mascota/lista}">Regresar</a>
 
             <div th:if="${msg != null}" th:text="${msg}" class="alert alert-success" role="alert"></div>
@@ -32,6 +34,9 @@
                     </tr>
                 </tbody>
             </table>
+
+            <footer th:replace="fragments/general.html :: footer"></footer>
+
         </div>
 
         <script th:replace="fragments/general.html::footer-bs"></script>

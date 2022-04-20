@@ -48,7 +48,6 @@
             <td th:text="${contacto.correo}">@mdo</td>
             <td th:text="${contacto.direccion}">Otto</td>
             <td th:text="${contacto.telefono}">@mdo</td>
-
             <td>
                 <a class="btn btn-danger" th:href="@{'/contacto/verMas?id='+${contacto.contacto}}">
                     Ver más
@@ -58,6 +57,8 @@
         </tr>
         </tbody>
     </table>
+
+    <footer th:replace="fragments/general.html :: footer"></footer>
 
 
 </div>
