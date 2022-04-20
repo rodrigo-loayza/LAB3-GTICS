@@ -1,0 +1,48 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="fragments/general.html :: cabecera(titulo = 'Lista de Mascotas')"></head>
+    <body>
+        <div class='container'>
+
+
+            <div id="content">
+                <main>
+                    <!-- Contenido -->
+
+                    <h1>Lista de Encargados</h1>
+                    <a class="btn btn-primary mt-4 mb-4" th:href="@{'/empleados/nuevo'}">Nuevo Encargado</a>
+
+                    <div class="container-fluid">
+
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nombre</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="encargados,i:${listaEncargados}">
+                                    <td th:text="${i.index + 1}"></td>
+                                    <td th:text="${encargados.nombre}"></td>
+                                    <td><a class="btn btn-danger" th:href="@{'/empleados/borrar?id=' + ${encargados.id}}">Borrar</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <!-- /Contenido -->
+                </main>
+                <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            <div class="text-muted">Colocar # Grupo - PUCP @ 2022</div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <script th:replace="fragments/general.html::footer-bs"></script>
+
+    </body>
+</html>
