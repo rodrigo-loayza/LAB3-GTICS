@@ -9,23 +9,27 @@
     <div class="container">
         <div class="row g-2">
             <div class="col-6">
-                <div class="p-3 border bg-light">Custom column padding</div>
+                <label class="form-label">ID del Contacto:</label>
+                <div class="p-3 border bg-light"  th:text= "${contacto.getId()}">Custom  </div>
             </div>
             <div class="col-6">
-                <div class="p-3 border bg-light">Custom column padding</div>
+                <label class="form-label">Correo:</label>
+                <div class="p-3 border bg-light"  th:text="${contacto.correo}">  padding</div>
             </div>
             <div class="col-6">
-                <div class="p-3 border bg-light">Custom column padding</div>
+                <label class="form-label">Direccion:</label>
+                <div class="p-3 border bg-light" th:text="${contacto.direccion}">  padding</div>
             </div>
             <div class="col-6">
-                <div class="p-3 border bg-light">Custom column padding</div>
+                <label class="form-label">Telefono:</label>
+                <div class="p-3 border bg-light" th:text="${contacto.telefono}">  padding</div>
             </div>
         </div>
     </div>
 
     <div class="row">
         <div class="col-2">
-            <a class="btn btn-primary mt-4 mb-4" th:href="@{/contacto/editar}">Editar Contacto</a>
+            <a class="btn btn-warning mt-4 mb-4" th:href="@{/contacto/editar}">Editar Contacto</a>
         </div>
         <div class="col-8"></div>
         <div class="col-2">
@@ -60,7 +64,7 @@
 <!--            <td th:text="${mascota.historia}">@mdo</td>-->
             <td th:text="${mascota.sexo}">Otto</td>
             <td>
-                <a class="btn btn-danger" th:href="@{'/contacto/borrar?id='+${mascota.idmascota}}">
+                <a class="btn btn-danger" th:href="@{'/contacto/delete?id='+${mascota.idmascota}}">
                     Eliminar
                 </a>
             </td>
@@ -68,12 +72,6 @@
         </tr>
         </tbody>
     </table>
-
-    <div class="d-grid gap-2 d-md-block">
-        <button class="btn btn-primary" type="button">Button</button>
-        <button class="btn btn-primary" type="button">Button</button>
-    </div>
-
 
 </div>
 <script th:replace="fragments/general.html::footer-bs"></script>
