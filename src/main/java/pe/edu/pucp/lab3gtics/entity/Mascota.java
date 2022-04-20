@@ -36,14 +36,14 @@ public class Mascota {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cuenta_idcuenta")
-    private Cuenta cuentaIdcuenta;
+    private Cuenta cuenta;
 
-    public Cuenta getCuentaIdcuenta() {
-        return cuentaIdcuenta;
+    public Cuenta getCuenta() {
+        return cuenta;
     }
 
-    public void setCuentaIdcuenta(Cuenta cuentaIdcuenta) {
-        this.cuentaIdcuenta = cuentaIdcuenta;
+    public void setCuenta(Cuenta cuentaIdcuenta) {
+        this.cuenta = cuentaIdcuenta;
     }
 
     public String getRazaotros() {

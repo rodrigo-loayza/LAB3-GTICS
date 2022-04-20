@@ -6,41 +6,26 @@
             <h2 class="pb-2 text-center border-bottom">Lista de Mascotas en TeleVet</h2>
             <a class="btn btn-primary mt-4 mb-4" th:href="@{/mascota/nuevo}">Nueva Mascota</a>
 
+            <div th:if="${msg != null}" th:text="${msg}" class="alert alert-success" role="alert"></div>
+            <div class="row">
+                <form method="post" th:action="@{'/mascota/buscar'}">
+                    <div class="input-group">
+                        <input name="parametro" class="form-control" type="text" placeholder="Buscar"
+                               th:value="${parametro == null ? '' : parametro}"/>
+                        <select name="filtro" class="form-select">
+                            <option th:selected="${filtro == null}" disabled>-- Seleccionar filtro --</option>
+                            <option th:selected="${filtro eq 'sexo'}" value="sexo">Sexo</option>
+                            <option th:selected="${filtro eq 'raza'}" value="raza">Raza</option>
+                            <option th:selected="${filtro eq 'contacto'}" value="contacto">Contacto</option>
+                        </select>
+                        <button type="submit" class="btn btn-outline-secondary">Buscar</button>
+                        <a class="btn btn-outline-secondary" th:href="@{'/mascota/lista'}">Limpiar</a>
+                    </div>
+                </form>
 
-<!--                <form method="post" th:action="@{'/mascota/buscar'}">-->
-<!--                    <div class="input-group">-->
-<!--                        <input name="parametro" class="form-control" type="text" placeholder="Selecciona un filtro"-->
-<!--                               th:value="${filtro == null ? '' : filtro}" onchange="this.form.submit()"/>-->
-<!--                        <select name="buscador" class="form-select">-->
-<!--                            <option th:selected="${buscador eq 'nombre'}" value="nombre" >Sexo</option>-->
-<!--                            <option th:selected="${buscador eq 'apellido'}" value="apellido">Raza</option>-->
-<!--                            <option th:selected="${buscador eq 'cargo'}" value="cargo">Contacto</option>-->
-<!--                        </select>-->
-
-
-<!--                        &lt;!&ndash;Selector de filtro&ndash;&gt;-->
-<!--                        <select name="buscador" class="form-select">-->
-<!--                            <option th:selected="${buscador eq 'sexo'}" value="nombre" >Sexo</option>-->
-<!--                            <option th:selected="${buscador eq 'raza'}" value="apellido">Raza</option>-->
-<!--                            <option th:selected="${buscador eq 'contacto'}" value="cargo">Contacto</option>-->
-<!--                        </select>-->
-<!--                        &lt;!&ndash;Selector de opciones del filtro&ndash;&gt;-->
-<!--                        <select name="buscador" class="form-select" th:each="">-->
-<!--                            <option th:selected="${buscador eq 'nombre'}" value="nombre" >Sexo</option>-->
-<!--                            <option th:selected="${buscador eq 'apellido'}" value="apellido">Raza</option>-->
-<!--                            <option th:selected="${buscador eq 'cargo'}" value="cargo">Contacto</option>-->
-<!--                        </select>-->
-<!--                    </div>-->
-<!--                </form>-->
-
-
-
-                <a class="btn btn-outline-secondary" th:href="@{'/employee/list'}">Limpiar</a>
             </div>
 
 
-            <div th:if="${msg != null}" th:text="${msg}" class="alert alert-danger" role="alert">
-            </div>
             <table class="table">
                 <thead>
                     <tr>
@@ -72,8 +57,6 @@
             </table>
         </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-                crossorigin="anonymous"></script>
+        <script th:replace="fragments/general.html :: footer-bs"></script>
     </body>
 </html>
