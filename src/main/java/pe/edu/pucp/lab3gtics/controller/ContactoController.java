@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pe.edu.pucp.lab3gtics.entity.Cuenta;
-import pe.edu.pucp.lab3gtics.repository.ContactoRepository;
+import pe.edu.pucp.lab3gtics.repository.CuentaRepository;
 
 import java.util.Optional;
 
@@ -16,12 +16,12 @@ import java.util.Optional;
 @RequestMapping("/contacto")
 public class ContactoController {
     @Autowired
-    ContactoRepository contactoRepository;
+    CuentaRepository cuentaRepository;
 
 
     @GetMapping("/listaContacto")
     public String ContactoPorMascota(Model model){
-        model.addAttribute("listaContacto", contactoRepository.obtenerContactoMascota());
+        model.addAttribute("listaContacto", cuentaRepository.obtenerContactoMascota());
         return "/contacto/lista";
     }
 
@@ -33,12 +33,12 @@ public class ContactoController {
 
     @PostMapping("/save")
     public String guardarContacto(Cuenta cuenta, RedirectAttributes attr) {
-        if (cuenta.getId()== 0) {
+        if (cuenta.getId()== null) {
             attr.addFlashAttribute("msg", "Contacto creado exitosamente");
         } else {
             attr.addFlashAttribute("msg", "Contacto actualizado exitosamente");
         }
-        contactoRepository.save(cuenta);
+        cuentaRepository.save(cuenta);
         return "redirect:/contacto/listaContacto";
 
     }

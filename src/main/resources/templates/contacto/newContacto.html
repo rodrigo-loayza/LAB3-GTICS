@@ -13,34 +13,34 @@
 <h2>Nuevo Contacto</h2><hr />
 <form method="post" th:action="@{'/contacto/save'}">
 
-    <input type="text" class="form-control"
-           value="id" hidden
-           name="id">
+<!--    <input type="text" class="form-control"-->
+<!--           value="id" hidden-->
+<!--           name="id">-->
 
     <div class="row">
         <div class="form-group col-6">
-            <label for="first_name">Correo</label>
-            <input type="text" class="form-control" name="first_name" id="first_name">
+            <label for="correo">Correo</label>
+            <input type="text" class="form-control" name="correo" id="correo">
         </div>
         <div class="form-group col-6">
-            <label for="first_name">Password</label>
-            <input type="text" class="form-control" name="last_name" id="last_name">
+            <label for="password">Password</label>
+            <input type="text" class="form-control" name="password" id="password">
         </div>
     </div>
 
     <div class="row">
         <div class="form-group col-6">
-            <label for="first_name">Dirección</label>
-            <input  type="text" class="form-control" name="email" id="email">
+            <label for="direccion">Dirección</label>
+            <input  type="text" class="form-control" name="direccion" id="direccion">
         </div>
         <div class="form-group col-6">
-            <label for="first_name">Telefono</label>
-            <input  type="text" class="form-control" name="password" id="password">
+            <label for="telefono">Telefono</label>
+            <input  type="text" class="form-control" name="telefono" id="telefono">
         </div>
     </div>
 
 
-    <a th:href="@{'/contacto/listar'}" class="btn btn-danger">Cancelar</a>
+    <a th:href="@{'/contacto/listaContacto'}" class="btn btn-danger">Cancelar</a>
     <button type="submit" class="btn btn-primary">Registrar</button>
 
     <div class="row">
