@@ -6,7 +6,7 @@
             <h2 class="pb-2 text-center border-bottom">Detalle de servicios</h2>
             <h5 class="pb-2" th:text="'Nombre: '+ ${mascota.nombre}"></h5>
             <h5 class="pb-2 border-bottom" th:text="'Edad: '+ (2022 - ${mascota.anho})"></h5>
-            <a class="btn btn-primary mt-4 mb-4" th:href="@{/servicio/nuevo}">Nuevo Servicio</a>
+            <a class="btn btn-primary mt-4 mb-4" th:href="@{'/servicio/nuevo?idmascota='+${mascota.id}+'&idcuenta='+${mascota.cuenta.id}}">Nuevo Servicio</a>
             <a class="btn btn-outline-secondary mt-4 mb-4" th:href="@{/mascota/lista}">Regresar</a>
 
             <div th:if="${msg != null}" th:text="${msg}" class="alert alert-success" role="alert"></div>
@@ -29,10 +29,6 @@
                         <td th:text="${servicio.getEntrega()}"></td>
                         <td th:text="${servicio.getResponsable()}"></td>
                         <td th:text="${servicio.getDescripcion()}"></td>
-                        <td><a class="btn btn-primary"
-                               th:href="@{'/mascota/edit?id='+${mascota.id}}">Editar</a></td>
-                        <td><a class="btn btn-danger"
-                               th:href="@{'/mascota/delete?id='+${mascota.id}}">Borrar</a></td>
                     </tr>
                 </tbody>
             </table>

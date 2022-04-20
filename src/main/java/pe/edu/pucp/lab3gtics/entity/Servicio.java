@@ -2,6 +2,7 @@ package pe.edu.pucp.lab3gtics.entity;
 
 import javax.persistence.*;
 import java.time.Instant;
+import java.time.LocalTime;
 
 @Entity
 @Table(name = "servicio")
@@ -20,7 +21,7 @@ public class Servicio {
     private Cuenta cuenta;
 
     @Column(name = "hora_inicio", nullable = false)
-    private Instant horainicio;
+    private String horainicio;
 
     @Column(name = "duracion", nullable = false)
     private Integer duracion;
@@ -57,11 +58,11 @@ public class Servicio {
         this.duracion = duracion;
     }
 
-    public Instant getHorainicio() {
+    public String getHorainicio() {
         return horainicio;
     }
 
-    public void setHorainicio(Instant horainicio) {
+    public void setHorainicio(String horainicio) {
         this.horainicio = horainicio;
     }
 

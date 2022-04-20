@@ -16,14 +16,14 @@ public class OpcionServicio {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "servicio_idservicio", nullable = false)
-    private Servicio servicioIdservicio;
+    private Servicio servicio;
 
-    public Servicio getServicioIdservicio() {
-        return servicioIdservicio;
+    public Servicio getServicio() {
+        return servicio;
     }
 
-    public void setServicioIdservicio(Servicio servicioIdservicio) {
-        this.servicioIdservicio = servicioIdservicio;
+    public void setServicio(Servicio servicioIdservicio) {
+        this.servicio = servicioIdservicio;
     }
 
     public Opcion getOpcion() {

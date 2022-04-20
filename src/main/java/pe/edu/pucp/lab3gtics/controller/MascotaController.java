@@ -125,7 +125,7 @@ public class MascotaController {
         Optional<Mascota> optMascota = mascotaRepository.findById(id);
         if (optMascota.isPresent()) {
             mascotaRepository.deleteById(id);
-            attr.addFlashAttribute("msgDel", "Empleado borrado exitosamente");
+            attr.addFlashAttribute("msgDel", "Mascota borrada exitosamente");
         }
         return "redirect:/mascota/lista";
     }
