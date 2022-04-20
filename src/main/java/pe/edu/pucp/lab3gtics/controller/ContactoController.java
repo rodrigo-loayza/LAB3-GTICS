@@ -20,7 +20,7 @@ public class ContactoController {
     CuentaRepository cuentaRepository;
 
 
-    @GetMapping("/lista")
+    @GetMapping(value = {"", "/","/listaContacto"})
     public String ContactoPorMascota(Model model){
         model.addAttribute("listaContacto", cuentaRepository.obtenerContactoMascota());
         return "/contacto/lista";
