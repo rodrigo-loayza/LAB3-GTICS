@@ -1,10 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <title>Lista de Contacto por Mascota</title>
 </head>
 <body>
+<div class="container">
+    <!--    AQUI ESTARA EL FRAGMENT-->
 
+
+    <h1>Lista de Contactos y/o Dueños</h1>
+
+    <a class="btn btn-primary mt-4 mb-4" th:href="@{/employee/newEmployee}">Nuevo</a>
+
+
+<!--    <div class="alert alert-success" role="alert"-->
+<!--         th:if="${msg!=null}" th:text="${msg}">-->
+<!--        A simple success alert—check it out!-->
+<!--    </div>-->
+
+    <!--    In this part, you can see a table which contain information about each employee-->
+    <table class="table table-sm">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">id Contacto</th>
+            <th scope="col">Cantidad Mascotas</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Direccion</th>
+            <th scope="col">Teléfono</th>
+            <th scope="col"></th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+        <tr th:each="contacto, i : ${listaContacto}">
+            <th scope="row" th:text="${i.index +1}">1</th>
+            <td th:text="${contacto.contacto}">Mark</td>
+            <td th:text="${contacto.mascotas}">Otto</td>
+            <td th:text="${contacto.correo}">@mdo</td>
+            <td th:text="${contacto.direccion}">Otto</td>
+            <td th:text="${contacto.telefono}">@mdo</td>
+
+            <td>
+                <a class="btn btn-primary" th:href="@{'/employee/edit?id='+${contacto.contacto}}">
+                    Ver más
+                </a>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>
