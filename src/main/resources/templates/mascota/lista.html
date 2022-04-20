@@ -6,6 +6,39 @@
             <h2 class="pb-2 text-center border-bottom">Lista de Mascotas en TeleVet</h2>
             <a class="btn btn-primary mt-4 mb-4" th:href="@{/mascota/nuevo}">Nueva Mascota</a>
 
+
+<!--                <form method="post" th:action="@{'/mascota/buscar'}">-->
+<!--                    <div class="input-group">-->
+<!--                        <input name="parametro" class="form-control" type="text" placeholder="Selecciona un filtro"-->
+<!--                               th:value="${filtro == null ? '' : filtro}" onchange="this.form.submit()"/>-->
+<!--                        <select name="buscador" class="form-select">-->
+<!--                            <option th:selected="${buscador eq 'nombre'}" value="nombre" >Sexo</option>-->
+<!--                            <option th:selected="${buscador eq 'apellido'}" value="apellido">Raza</option>-->
+<!--                            <option th:selected="${buscador eq 'cargo'}" value="cargo">Contacto</option>-->
+<!--                        </select>-->
+
+
+<!--                        &lt;!&ndash;Selector de filtro&ndash;&gt;-->
+<!--                        <select name="buscador" class="form-select">-->
+<!--                            <option th:selected="${buscador eq 'sexo'}" value="nombre" >Sexo</option>-->
+<!--                            <option th:selected="${buscador eq 'raza'}" value="apellido">Raza</option>-->
+<!--                            <option th:selected="${buscador eq 'contacto'}" value="cargo">Contacto</option>-->
+<!--                        </select>-->
+<!--                        &lt;!&ndash;Selector de opciones del filtro&ndash;&gt;-->
+<!--                        <select name="buscador" class="form-select" th:each="">-->
+<!--                            <option th:selected="${buscador eq 'nombre'}" value="nombre" >Sexo</option>-->
+<!--                            <option th:selected="${buscador eq 'apellido'}" value="apellido">Raza</option>-->
+<!--                            <option th:selected="${buscador eq 'cargo'}" value="cargo">Contacto</option>-->
+<!--                        </select>-->
+<!--                    </div>-->
+<!--                </form>-->
+
+
+
+                <a class="btn btn-outline-secondary" th:href="@{'/employee/list'}">Limpiar</a>
+            </div>
+
+
             <div th:if="${msg != null}" th:text="${msg}" class="alert alert-danger" role="alert">
             </div>
             <table class="table">
@@ -23,22 +56,20 @@
                 </thead>
                 <tbody>
                     <tr th:each="mascota : ${listaMascotas}">
-                        <td th:text="${mascota.}"></td>
-                        <td th:text="${mascota.}"></td>
-                        <td th:text="${mascota.}"></td>
-                        <td th:text="${mascota.}"></td>
-                        <td><a class="btn btn-outline-success"
-                               th:href="@{'/products/edit?id='+${product.id}}">Ver más</a></td>
-                        <td><a class="btn btn-primary"
-                               th:href="@{'/products/edit?id='+${product.id}}">Editar</a></td>
-                        <td><a class="btn btn-danger"
-                               th:href="@{'/products/delete?id='+${product.id}}">Borrar</a></td>
+                        <td th:text="${mascota.nombre}"></td>
+                        <td th:text="${mascota.anho}"></td>
+                        <td th:text="${mascota.sexo}"></td>
+                        <td th:text="${mascota.raza}"></td>
+                        <td th:text="${mascota.cantidadservicios}"></td>
                         <td><a class="btn btn-outline-primary"
-                               th:href="@{'/products/edit?id='+${product.id}}">Detalles de Servicios</a></td>
+                               th:href="@{'/mascota/?id='+${mascota.id}}">Detalles de Servicios</a></td>
+                        <td><a class="btn btn-primary"
+                               th:href="@{'/mascota/edit?id='+${mascota.id}}">Editar</a></td>
+                        <td><a class="btn btn-danger"
+                               th:href="@{'/mascota/delete?id='+${mascota.id}}">Borrar</a></td>
                     </tr>
                 </tbody>
             </table>
-
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
