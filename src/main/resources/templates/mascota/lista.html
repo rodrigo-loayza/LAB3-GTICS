@@ -4,9 +4,7 @@
     <body>
         <div class="container">
             <h2 class="pb-2 text-center border-bottom">Lista de Mascotas en TeleVet</h2>
-            <a class="btn btn-primary mt-4 mb-4" th:href="@{/mascota/new}">Nueva Mascota</a>
-
-
+            <a class="btn btn-primary mt-4 mb-4" th:href="@{/mascota/nuevo}">Nueva Mascota</a>
 
             <div th:if="${msg != null}" th:text="${msg}" class="alert alert-danger" role="alert">
             </div>

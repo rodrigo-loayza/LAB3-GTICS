@@ -11,14 +11,12 @@ import pe.edu.pucp.lab3gtics.repository.MascotaRepository;
 @RequestMapping("mascota")
 public class MascotaController {
 
-    @Autowired
-    MascotaRepository mascotaRepository;
+//    @Autowired
+//    MascotaRepository mascotaRepository;
 
-    @GetMapping(value = {"", "/lista"})
-    public String listarMascotas(Model model) {
-//        model.addAttribute("listaMascotas", mascotaRepository.);
-    }
-
-
+//    @GetMapping(value = {"", "/lista"})
+//    public String listarMascotas(Model model) {
+////        model.addAttribute("listaMascotas", mascotaRepository.);
+//    }
 
 }
