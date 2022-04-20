@@ -62,11 +62,6 @@ public class ContactoController {
         } else {
             return "redirect:/contacto/listaContacto";
         }
-
-//        model.addAttribute("mascotaPorContacto",cuentaRepository.obtenerMascotasPorContacto(id));
-//        model.addAttribute("contacto",cuentaRepository.findById(id));
-//        model.addAttribute("id",id);
-//        return "/contacto/vermas";
     }
 
     @GetMapping("/delete")
@@ -84,6 +79,22 @@ public class ContactoController {
         return "redirect:/contacto/listaContacto";
 
     }
+
+    @GetMapping("/editar")
+    public String editarEmployee(Model model, @RequestParam("id") int id) {
+        Optional<Cuenta> optionalCuenta = cuentaRepository.findById(id);
+
+        if (optionalCuenta.isPresent()) {
+            Cuenta cuenta = optionalCuenta.get();
+            model.addAttribute("contacto",cuenta);
+            model.addAttribute("id",id);
+            return "/contacto/editar";
+        } else {
+            return "redirect:/employee/list";
+        }
+    }
+
+
 
 
 }

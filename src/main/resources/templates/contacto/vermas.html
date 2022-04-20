@@ -17,11 +17,11 @@
                 <div class="p-3 border bg-light"  th:text="${contacto.correo}">  padding</div>
             </div>
             <div class="col-6">
-                <label class="form-label">Direccion:</label>
+                <label class="form-label">Dirección:</label>
                 <div class="p-3 border bg-light" th:text="${contacto.direccion}">  padding</div>
             </div>
             <div class="col-6">
-                <label class="form-label">Telefono:</label>
+                <label class="form-label">Teléfono:</label>
                 <div class="p-3 border bg-light" th:text="${contacto.telefono}">  padding</div>
             </div>
         </div>
@@ -29,7 +29,7 @@
 
     <div class="row">
         <div class="col-2">
-            <a class="btn btn-warning mt-4 mb-4" th:href="@{/contacto/editar}">Editar Contacto</a>
+            <a class="btn btn-warning mt-4 mb-4" th:href="@{'/contacto/editar?id='+${contacto.getId()}}">Editar Contacto</a>
         </div>
         <div class="col-8"></div>
         <div class="col-2">
@@ -39,7 +39,7 @@
 
 
 
-    <h2 class="pb-2 text-center border-bottom">Lista de Mascotas del contacto con Id: </h2>
+    <h2 class="pb-2 text-center border-bottom">Lista de Mascotas del contacto</h2>
     <table class="table table-striped">
         <thead>
         <tr>

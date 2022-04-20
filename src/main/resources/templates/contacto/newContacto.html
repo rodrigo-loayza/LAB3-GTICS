@@ -26,15 +26,15 @@
             <label for="telefono">Telefono</label>
             <input  type="text" class="form-control" name="telefono" id="telefono">
         </div>
+    </div> <br>
+
+
+    <div class="d-grid gap-2 d-md-block">
+        <a th:href="@{'/contacto/listaContacto'}" class="btn btn-danger">Cancelar</a>
+        <button class="btn btn-primary" type="submit">Registrar</button>
     </div>
 
 
-    <a th:href="@{'/contacto/listaContacto'}" class="btn btn-danger">Cancelar</a>
-    <button type="submit" class="btn btn-primary">Registrar</button>
-
-    <div class="row">
-        <div class="form-group"></div>
-    </div>
 
 </form>
 <script th:replace="fragments/general.html::footer-bs"></script>
