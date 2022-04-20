@@ -23,7 +23,7 @@ public class OpcionController{
     @Autowired
     OpcionRepository opcionRepository;
 
-    @GetMapping("lista")
+    @GetMapping(value = {"", "lista"})
     public String listaOpciones(Model model){
         model.addAttribute("listaOpciones",opcionRepository.findAll());
         return "opciones/lista";

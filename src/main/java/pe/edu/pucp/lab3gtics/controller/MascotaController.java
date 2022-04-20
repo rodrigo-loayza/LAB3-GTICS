@@ -37,8 +37,6 @@ public class MascotaController {
     @Autowired
     CuentaRepository cuentaRepository;
 
-
-
     @GetMapping(value = {"", "/lista"})
     public String listarMascotas(Model model) {
         model.addAttribute("listaMascotas", mascotaRepository.obtenerListaMascotas());
@@ -50,9 +48,9 @@ public class MascotaController {
                                   @RequestParam("filtro") String filtro,
                                   @RequestParam("parametro") String parametro) {
 
-        if (parametro.equals("")) {
-            attr.addFlashAttribute("msg", "La búsqueda no debe ser vacía.");
-            return "redirect:/employee";
+        if (parametro.equals("") || filtro.equals("")) {
+            attr.addFlashAttribute("msgBuscar", "La búsqueda no debe ser vacía y debe seleccionar un filtro.");
+            return "redirect:/mascota/lista";
         } else {
             model.addAttribute("parametro", parametro);
             model.addAttribute("filtro", filtro);
@@ -73,30 +71,25 @@ public class MascotaController {
                     break;
             }
         }
-
         return "mascota/lista";
     }
 
     @GetMapping("/nuevo")
     public String nuevaMascota(Model model) {
-        //RazaEspecie
         List<RazaEspecie> listaRazaespecie = razaEspecieRepository.findAll();
         model.addAttribute("listaRazaespecie", listaRazaespecie);
-
-        //Marca
         List<Cuenta> listaCuenta = cuentaRepository.findAll();
         model.addAttribute("listaCuenta", listaCuenta);
-
         return "mascota/nuevo";
     }
 
     @PostMapping("/save")
     public String guardarMascota(Mascota mascota,
-                                    RedirectAttributes attr) {
+                                 RedirectAttributes attr) {
         if (mascota.getId() == null) {
-            attr.addFlashAttribute("msg", "Inventario creado exitosamente.");
+            attr.addFlashAttribute("msg", "Mascota creada exitosamente.");
         } else {
-            attr.addFlashAttribute("msg", "Inventario editado exitosamente.");
+            attr.addFlashAttribute("msg", "Mascota editada exitosamente.");
         }
         mascotaRepository.save(mascota);
         return "redirect:/mascota";
@@ -109,11 +102,9 @@ public class MascotaController {
         Optional<Mascota> optional = mascotaRepository.findById(mascotaid);
 
         if (optional.isPresent()) {
-            //RazaEspecie
             List<RazaEspecie> listaRazaespecie = razaEspecieRepository.findAll();
             model.addAttribute("listaRazaespecie", listaRazaespecie);
 
-            //Marca
             List<Cuenta> listaCuenta = cuentaRepository.findAll();
             model.addAttribute("listaCuenta", listaCuenta);
 
@@ -124,6 +115,19 @@ public class MascotaController {
         } else {
             return "redirect:/mascota/lista";
         }
+    }
+
+    @GetMapping("/delete")
+    public String borrarEmpleado(Model model,
+                                 @RequestParam("id") int id,
+                                 RedirectAttributes attr) {
+
+        Optional<Mascota> optMascota = mascotaRepository.findById(id);
+        if (optMascota.isPresent()) {
+            mascotaRepository.deleteById(id);
+            attr.addFlashAttribute("msgDel", "Empleado borrado exitosamente");
+        }
+        return "redirect:/mascota/lista";
     }
 
 }

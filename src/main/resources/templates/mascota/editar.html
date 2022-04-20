@@ -44,7 +44,7 @@
 
                     <div class="mb-3">
                         <label class="form-label">Cuenta</label>
-                        <select class="form-select" th:field="*{cuentaIdcuenta}">
+                        <select class="form-select" th:field="*{cuenta}">
                             <option th:each="cuenta : ${listaCuenta}"
                                     th:value="${cuenta.id }"
                                     th:text="${cuenta.correo} "></option>

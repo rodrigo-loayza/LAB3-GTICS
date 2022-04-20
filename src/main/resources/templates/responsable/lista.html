@@ -2,27 +2,23 @@
     <head th:replace="fragments/general.html :: cabecera(titulo = 'Lista de Mascotas')"></head>
     <body>
         <div class='container'>
-
-
             <div id="content">
                 <main>
                     <!-- Contenido -->
                     <h2 class="pb-2 text-center border-bottom">Lista de Encargados</h2>
                     <div class="row">
                         <div class="col-2">
-                            <a class="btn btn-primary mt-4 mb-4" th:href="@{'/opciones/new'}">Nuevo Servicio</a>
+                            <a class="btn btn-primary mt-4 mb-4" th:href="@{'/opciones/new'}">Nuevo Responsable</a>
                         </div>
                         <div class="col-8"></div>
                         <div class="col-2">
                             <a class="btn btn-primary mt-4 mb-4" th:href="@{'/'}">Retroceder</a>
                         </div>
-
                     </div>
                     <div class="alert alert-success" th:text="${msg}" th:if="${msg != null}"></div>
                     <div class="alert alert-warning" th:text="${msg1}" th:if="${msg1 != null}"></div>
                     <div class="alert alert-danger" th:text="${msg2}" th:if="${msg2 != null}"></div>
                     <div class="container-fluid">
-
                         <table class="table table-striped">
                             <thead>
                                 <tr>
@@ -35,11 +31,11 @@
                                 <tr th:each="encargados,i:${listaEncargados}">
                                     <td th:text="${i.index + 1}"></td>
                                     <td th:text="${encargados.nombre}"></td>
-                                    <td><a class="btn btn-danger" th:href="@{'/empleados/borrar?id=' + ${encargados.id}}">Borrar</a></td>
+                                    <td><a class="btn btn-danger"
+                                           th:href="@{'/empleados/borrar?id=' + ${encargados.id}}">Borrar</a></td>
                                 </tr>
                             </tbody>
                         </table>
-
                     </div>
                     <!-- /Contenido -->
                 </main>

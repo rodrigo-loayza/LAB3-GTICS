@@ -4,16 +4,25 @@
     <body>
         <div class="container">
             <h2 class="pb-2 text-center border-bottom">Lista de Mascotas en TeleVet</h2>
-            <a class="btn btn-primary mt-4 mb-4" th:href="@{/mascota/nuevo}">Nueva Mascota</a>
 
-            <div th:if="${msg != null}" th:text="${msg}" class="alert alert-success" role="alert"></div>
+            <div class="row">
+                <div class="col-2">
+                    <a class="btn btn-primary mt-4 mb-4" th:href="@{/mascota/nuevo}">Nueva Mascota</a>
+                </div>
+                <div class="col-8"></div>
+                <div class="col-2">
+                    <a class="btn btn-primary mt-4 mb-4" th:href="@{'/'}">Retroceder</a>
+                </div>
+            </div>
+
+            <div th:if="${msgBuscar != null}" th:text="${msgBuscar}" class="alert alert-danger" role="alert"></div>
             <div class="row">
                 <form method="post" th:action="@{'/mascota/buscar'}">
                     <div class="input-group">
                         <input name="parametro" class="form-control" type="text" placeholder="Buscar"
                                th:value="${parametro == null ? '' : parametro}"/>
                         <select name="filtro" class="form-select">
-                            <option th:selected="${filtro == null}" disabled>-- Seleccionar filtro --</option>
+                            <option th:selected="${filtro == null}" value="">-- Seleccionar filtro --</option>
                             <option th:selected="${filtro eq 'sexo'}" value="sexo">Sexo</option>
                             <option th:selected="${filtro eq 'raza'}" value="raza">Raza</option>
                             <option th:selected="${filtro eq 'contacto'}" value="contacto">Contacto</option>
@@ -22,39 +31,39 @@
                         <a class="btn btn-outline-secondary" th:href="@{'/mascota/lista'}">Limpiar</a>
                     </div>
                 </form>
+            </div>
 
-
-        <div th:if="${msg != null}" th:text="${msg}" class="alert alert-success" role="alert">
-        </div>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Año</th>
-                    <th>Sexo</th>
-                    <th>Raza</th>
-                    <th>Servicios</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="mascota : ${listaMascotas}">
-                    <td th:text="${mascota.nombre}"></td>
-                    <td th:text="${mascota.anho}"></td>
-                    <td th:text="${mascota.sexo}"></td>
-                    <td th:text="${mascota.raza}"></td>
-                    <td th:text="${mascota.cantidadservicios}"></td>
-                    <td><a class="btn btn-outline-primary"
-                           th:href="@{'/servicio/lista?id='+${mascota.id}}">Detalles de Servicios</a></td>
-                    <td><a class="btn btn-primary"
-                           th:href="@{'/mascota/edit?id='+${mascota.id}}">Editar</a></td>
-                    <td><a class="btn btn-danger"
-                           th:href="@{'/mascota/delete?id='+${mascota.id}}">Borrar</a></td>
-                </tr>
-            </tbody>
-        </table>
+            <div th:if="${msg != null}" th:text="${msg}" class="alert alert-success" role="alert"></div>
+            <div th:if="${msgDel != null}" th:text="${msgDel}" class="alert alert-danger" role="alert"></div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Año</th>
+                        <th>Sexo</th>
+                        <th>Raza</th>
+                        <th>Servicios</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="mascota : ${listaMascotas}">
+                        <td th:text="${mascota.nombre}"></td>
+                        <td th:text="${mascota.anho}"></td>
+                        <td th:text="${mascota.sexo}"></td>
+                        <td th:text="${mascota.raza}"></td>
+                        <td th:text="${mascota.cantidadservicios}"></td>
+                        <td><a class="btn btn-outline-primary"
+                               th:href="@{'/servicio/lista?id='+${mascota.id}}">Detalles de Servicios</a></td>
+                        <td><a class="btn btn-primary"
+                               th:href="@{'/mascota/edit?id='+${mascota.id}}">Editar</a></td>
+                        <td><a class="btn btn-danger"
+                               th:href="@{'/mascota/delete?id='+${mascota.id}}">Borrar</a></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
         <script th:replace="fragments/general.html :: footer-bs"></script>
