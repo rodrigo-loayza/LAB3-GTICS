@@ -36,7 +36,7 @@ public class ResponsableController {
     @PostMapping("/guardar")
     public String guardarMarca(Responsable responsable, RedirectAttributes attributes){
         responsableRepository.save(responsable);
-        attributes.addFlashAttribute("msg", "Marca creada exitosamente");
+        attributes.addFlashAttribute("msg", "Empleado creado exitosamente");
         return "redirect:/empleados/lista";
     }
 
@@ -45,7 +45,7 @@ public class ResponsableController {
         Optional<Responsable> optionalResponsable = responsableRepository.findById(id);
         if (optionalResponsable.isPresent()) {
             responsableRepository.deleteById(id);
-            attributes.addFlashAttribute("msg2", "Marca borrada exitosamente");
+            attributes.addFlashAttribute("msg2", "Empleado borrado exitosamente");
         }
         return "redirect:/empleados/lista";
     }

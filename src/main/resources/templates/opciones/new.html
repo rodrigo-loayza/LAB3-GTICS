@@ -1,0 +1,45 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+    <head th:replace="fragments/general.html :: cabecera(titulo = 'Lista de Mascotas')"></head>
+    <body>
+
+        <div class='container'>
+
+            <div id="content">
+                <main>
+                    <!-- Contenido -->
+                    <div class="page-header text-center">
+                        <h2>Nuevo Servicio</h2>
+                    </div>
+                    <div class="container-fluid">
+                        <form method="post" th:action="@{'/opciones/guardar'}">
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label">Nombre</label>
+                                <input name="descripcion" type="text" class="form-control" id="nombre">
+                            </div>
+                            <div class="mb-3">
+                                <label for="tiempo" class="form-label">Tiempo (min)</label>
+                                <input name="tiempominutos" type="text" class="form-control" id="tiempo">
+                            </div>
+                            <div class="mb-3">
+                                <label for="precio" class="form-label">Precio (soles)</label>
+                                <input name="precio" type="text" class="form-control" id="precio">
+                            </div>
+                            <a th:href="@{'/opciones/lista'}" class="btn btn-danger">Cancelar</a>
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                        </form>
+
+                    </div>
+                </main>
+            </div>
+            <!-- /Contenido -->
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Grupo 5 - PUCP @ 2022</div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <script th:replace="fragments/general.html::footer-bs"></script>
+    </body>
+</html>

@@ -8,11 +8,12 @@
                 <main>
                     <!-- Contenido -->
 
-                    <h1>Lista de Encargados</h1>
-                    <a class="btn btn-primary mt-4 mb-4" th:href="@{'/empleados/nuevo'}">Nuevo Encargado</a>
+                    <h1>Lista de Servicios</h1>
+                    <a class="btn btn-primary mt-4 mb-4" th:href="@{'/opciones/new'}">Nuevo Servicio</a>
                     <div class="alert alert-success" th:text="${msg}" th:if="${msg != null}"></div>
                     <div class="alert alert-warning" th:text="${msg1}" th:if="${msg1 != null}"></div>
                     <div class="alert alert-danger" th:text="${msg2}" th:if="${msg2 != null}"></div>
+
                     <div class="container-fluid">
 
                         <table class="table table-striped">
@@ -20,14 +21,20 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Nombre</th>
+                                    <th>Duracion del servicio</th>
+                                    <th>Precio</th>
+                                    <th></th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr th:each="encargados,i:${listaEncargados}">
+                                <tr th:each="op,i:${listaOpciones}">
                                     <td th:text="${i.index + 1}"></td>
-                                    <td th:text="${encargados.nombre}"></td>
-                                    <td><a class="btn btn-danger" th:href="@{'/empleados/borrar?id=' + ${encargados.id}}">Borrar</a></td>
+                                    <td th:text="${op.descripcion}"></td>
+                                    <td th:text="|${op.tiempominutos} min|"></td>
+                                    <td th:text="|${op.precio} soles|"></td>
+                                    <td><a class="btn btn-primary" th:href="@{'/opciones/editar?id=' + ${op.id}}">Editar</a></td>
+                                    <td><a class="btn btn-danger" th:href="@{'/opciones/borrar?id=' + ${op.id}}">Borrar</a></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -38,7 +45,7 @@
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Colocar # Grupo - PUCP @ 2022</div>
+                            <div class="text-muted">Grupo 5 - PUCP @ 2022</div>
                         </div>
                     </div>
                 </footer>
