@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="fragments/general.html :: cabecera(titulo = 'Nueva Mascota')"></head>
+    <body>
+        <div class="container">
+            <h2 class="pb-2 text-center border-bottom">Nueva Mascota</h2>
+
+            <div class="row mb-4">
+                <div class="col-md-6 offset-md-3">
+
+                    <form method="post" th:action="@{'/mascota/save'}">
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre de la mascota</label>
+                            <input type="text" class="form-control" name="nombre" id="nombre">
+                        </div>
+                        <div class="mb-3">
+                            <label for="anho" class="form-label">Año</label>
+                            <input type="text" class="form-control" name="anho" id="anho">
+                        </div>
+                        <div class="mb-3">
+                            <label for="historia" class="form-label">Historia</label>
+                            <input type="text" class="form-control" name="historia" id="historia">
+                        </div>
+                        <div class="mb-3">
+                            <label for="observaciones" class="form-label">observaciones</label>
+                            <input type="text" class="form-control" name="observaciones" id="observaciones">
+                        </div>
+                        <div class="mb-3">
+                            <label for="sexo" class="form-label">Sexo</label>
+                            <input type="text" class="form-control" name="sexo" id="sexo">
+                        </div>
+                        <div class="mb-3">
+                            <label for="razaespecie" class="form-label">Observaciones</label>
+                            <select class="form-select" name="razaespecie" id="razaespecie">
+                                <option th:each="raza : ${listaRazaespecie}" th:value="${raza.id}"
+                                        th:text="${raza.descripcion}"></option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="razaotros" class="form-label">Otra raza</label>
+                            <input type="text" class="form-control" name="razaotros" id="razaotros">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="cuentaIdcuenta" class="form-label">Cuenta</label>
+                            <select class="form-select" name="cuentaIdcuenta" id="cuentaIdcuenta">
+                                <option th:each="cuenta : ${listaCuenta}" th:value="${cuenta.id}"
+                                        th:text="${cuenta.correo}"></option>
+                            </select>
+                        </div>
+
+
+                        <a th:href="@{'/mascota'}" class="btn btn-danger">Cancelar</a>
+                        <button type="submit" class="btn btn-primary">Registrar</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+                crossorigin="anonymous"></script>
+    </body>
+</html>

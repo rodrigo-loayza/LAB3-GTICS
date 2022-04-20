@@ -23,38 +23,38 @@
                     </div>
                 </form>
 
-            </div>
 
-
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Año</th>
-                        <th>Sexo</th>
-                        <th>Raza</th>
-                        <th>Servicios</th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="mascota : ${listaMascotas}">
-                        <td th:text="${mascota.nombre}"></td>
-                        <td th:text="${mascota.anho}"></td>
-                        <td th:text="${mascota.sexo}"></td>
-                        <td th:text="${mascota.raza}"></td>
-                        <td th:text="${mascota.cantidadservicios}"></td>
-                        <td><a class="btn btn-outline-primary"
-                               th:href="@{'/mascota/?id='+${mascota.id}}">Detalles de Servicios</a></td>
-                        <td><a class="btn btn-primary"
-                               th:href="@{'/mascota/edit?id='+${mascota.id}}">Editar</a></td>
-                        <td><a class="btn btn-danger"
-                               th:href="@{'/mascota/delete?id='+${mascota.id}}">Borrar</a></td>
-                    </tr>
-                </tbody>
-            </table>
+        <div th:if="${msg != null}" th:text="${msg}" class="alert alert-success" role="alert">
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Año</th>
+                    <th>Sexo</th>
+                    <th>Raza</th>
+                    <th>Servicios</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="mascota : ${listaMascotas}">
+                    <td th:text="${mascota.nombre}"></td>
+                    <td th:text="${mascota.anho}"></td>
+                    <td th:text="${mascota.sexo}"></td>
+                    <td th:text="${mascota.raza}"></td>
+                    <td th:text="${mascota.cantidadservicios}"></td>
+                    <td><a class="btn btn-outline-primary"
+                           th:href="@{'/mascota/?id='+${mascota.id}}">Detalles de Servicios</a></td>
+                    <td><a class="btn btn-primary"
+                           th:href="@{'/mascota/edit?id='+${mascota.id}}">Editar</a></td>
+                    <td><a class="btn btn-danger"
+                           th:href="@{'/mascota/delete?id='+${mascota.id}}">Borrar</a></td>
+                </tr>
+            </tbody>
+        </table>
         </div>
 
         <script th:replace="fragments/general.html :: footer-bs"></script>
