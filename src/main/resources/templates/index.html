@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="fragments/general.html :: cabecera(titulo = 'TeleVet - Inicio')"></head>
+    <body>
+
+
+        <div class="px-4 py-5 my-5 text-center">
+            <h1 class="display-5 fw-bold">TeleVet</h1>
+            <div class="col-lg-6 mx-auto my-3">
+                <img th:src="@{/images/mascotas.jpg}">
+            </div>
+            <div class="col-lg-6 mx-auto my-3">
+                <a type="button" th:href="@{/mascotas/lista}" class="btn btn-primary btn-lg px-4 gap-3">Lista de Mascota</a>
+            </div>
+            <div class="col-lg-6 mx-auto my-3">
+                <a type="button" th:href="@{/mascotas/lista}" class="btn btn-danger btn-lg px-4 gap-3">Contacto y/o Dueño</a>
+            </div>
+            <div class="col-lg-6 mx-auto my-3">
+                <a type="button" th:href="@{/mascotas/lista}" class="btn btn-warning btn-lg px-4 gap-3">Servicio</a>
+            </div>
+            <div class="col-lg-6 mx-auto my-3">
+                <a type="button" th:href="@{/mascotas/lista}" class="btn btn-success btn-lg px-4 gap-3">Nuevo Responsable</a>
+            </div>
+        </div>
+
+
+        <script th:replace="fragments/general.html :: footer-bs"></script>
+    </body>
+</html>
